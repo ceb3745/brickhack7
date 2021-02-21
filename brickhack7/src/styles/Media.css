@@ -1,0 +1,41 @@
+.pageContainer {
+    color: white;
+    height: 100vh;
+}
+
+.contentContainer {
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+}
+
+.descriptionContainer {
+    padding: 40px;
+    font-size: 25px;
+    width: 35vw;
+    text-align: left;
+}
+
+.file {
+    font-size: 30px;
+}
+
+.downloadButton {
+    margin-left: 60px;
+    transition: 0.2s;
+}
+
+.downloadButton:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.cancelButton {
+    margin-left: 20px;
+    transition: 0.2s;
+}
+
+.cancelButton:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
