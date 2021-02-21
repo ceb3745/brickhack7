@@ -13,12 +13,12 @@ const Media = () =>{
     const handleAudioUpload = (file) => {
         console.log(file)
         
-        const url = window.URL.createObjectURL(file)
+        const url = window.URL.createObjectURL(file.file)
         const click = document.createEvent('Event')
         click.initEvent('click', true, true)
         const link = document.createElement('A')
         link.href = url
-        link.download = '../media/output.mp3'
+        link.download = '../media/output.wav'
         link.dispatchEvent(click)
         link.click()
         return link
