@@ -13,6 +13,7 @@ const Media = ({saveFile}) =>{
         s: 0
         }
     });
+    const [fileName, setFileName] = useState('');
     
     const handleAudioStop = (data) => {
         // console.log(data)
@@ -21,7 +22,8 @@ const Media = ({saveFile}) =>{
 
     const handleAudioUpload = (file) => {
         if(file !== null){
-            saveFile(file);
+            console.log(fileName);
+            saveFile({file, name: fileName});
         }
         // console.log(file);
     }
@@ -40,15 +42,23 @@ const Media = ({saveFile}) =>{
         setAudioDetails(reset);
     }
 
-    return(<Recorder
-        record={true}
-        title={"Record You Audio for Processing..."}
-        audioURL={audioDetails.url}
-        showUIAudio
-        handleAudioStop={handleAudioStop}
-        handleAudioUpload={handleAudioUpload}
-        handleRest={handleReset} 
-    />)
+    const onChangeInput = (e) => {
+        setFileName(e.target.value);
+    }
+
+    return(
+        <div>
+            <div>Enter File Name: <input value={fileName} onChange={onChangeInput}/></div>
+            <Recorder
+                record={true}
+                title={"Record You Audio for Processing..."}
+                audioURL={audioDetails.url}
+                showUIAudio
+                handleAudioStop={handleAudioStop}
+                handleAudioUpload={handleAudioUpload}
+                handleRest={handleReset} 
+            />
+        </div>)
 }
 
 export default Media;

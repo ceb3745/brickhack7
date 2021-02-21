@@ -30,6 +30,18 @@ const Media = () =>{
 
     return(
         <div className="pageContainer">
+            <div className="fileContainer">
+                <div className="fileContainerHeader">Files</div>
+                {files.map((file)=>{
+                        return (
+                            <div key={files.indexOf(file)} className="file">
+                                {file.name === ''? 'Unnamed File': file.name}: {file.file.size}         
+                                <Download className="downloadButton" onClick={()=>{handleAudioUpload(file)}} color="black" size={40}/>
+                                <X className="cancelButton" onClick={()=>{removeFile(file)}} color="black" size={40}/>
+                            </div>
+                        )
+                })}
+            </div>
             <div className="contentContainer">
                 <div className="descriptionContainer">
                     Record the media around you for analysis.
@@ -37,20 +49,9 @@ const Media = () =>{
                     to determine if the audio around you could be threatening.
                 </div>
                 <MediaRecorder
+                    className="recorder"
                     saveFile={saveFile}
                 />
-            </div>
-            <div>
-                <div>Files</div>
-                {files.map((file)=>{
-                        return (
-                            <div className="file">
-                                {file.size}: {file.type}         
-                                <Download className="downloadButton" onClick={()=>{handleAudioUpload(file)}} color="white" size={40}/>
-                                <X className="cancelButton" onClick={()=>{removeFile(file)}} color="white" size={40}/>
-                            </div>
-                        )
-                })}
             </div>
         </div>)
 }
